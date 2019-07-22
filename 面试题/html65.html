@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 在一个字符串中找到第一个只出现一次的字符。如输入abaccdefbf，则输出d，找不到则输出false
+    var str = 'asdasdfayyffjasasojoz';
+
+
+    // 方法一
+    // var strs = [];
+    // var len = str.length;
+    // var num = 0;
+    // // 将字符串转换为数组
+    // for (var i = 0; i < len; i++) {
+    //     strs.push(str.slice(i, i + 1));
+    // }
+    // // 遍历数组
+    // for (var j = 0; j < len; j++) {
+    //     //循环判断当前元素是否是同一个字符，不是便使num++
+    //     for (var k = 0; k < len; k++) {
+    //         if (j != k) {
+    //             if (strs[j] != strs[k]) {
+    //                 num++;
+    //             }
+    //         }
+    //     }
+    //     // 判断此元素的num是否为字符串长度-1，是则打印此元素，并结束循环
+    //     if (num == len - 1) { //判断条件不能是1，即根据出现次数判断结束，因为重复的元素也会经过num=1
+    //         console.log(strs[j]);
+    //         break;
+    //     }
+    //     num = 0;
+    // }
+
+
+
+    // 方法二-利用indexOf(str):返回 str 的第一次出现的位置,不存在则返回 -1；
+
+    function findSingleChar(str) {
+        var len = str.length;
+        for (var i = 0; i < len; i++) {
+            var firStr = str.slice(i + 1); //切割出i以后的字符，不包含i
+            var secStr = str.slice(0, i); //切割出i之前的字符，不包含i
+            if (firStr.indexOf(str[i]) == -1 && secStr.indexOf(str[i]) == -1) {
+                return str[i];
+            } else {
+                continue;
+            }
+        }
+    }
+    console.log(findSingleChar(str));
+</script>
+
+</html>
